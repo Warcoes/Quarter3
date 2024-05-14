@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visual Explorer</title> 
+  <style>
+    html, body { 
+  height: 100%; 
+  margin: 0; 
+  font-family: sans-serif;
+}
+
+body {
+  background: rgb(30,30,30);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #f0f0f0;
+}
+
+.container {
+  margin: 30px auto;
+  max-width: 900px;
+  display: flex; 
+  justify-content: space-between; 
+}
+
+.image-section {
+  position: relative;
+}
+
+#mainImage {
+  width: 450px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.info-section {
+  margin-left: 30px;
+}
+
+details.topic {
+  background-color: #333;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 15px; 
+  margin-bottom: 15px;
+}
+
+details.topic summary {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.description {
+  margin-top: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #555;
+  color: #f0f0f0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #777;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="image-section">
+      <img id="mainImage" src="a1.jpg" alt="Main Image">
+      <button id="changeImageButton">Open & Close Eyes</button>
+    </div>
+
+    <div class="info-section">
+      <details class="topic">
+        <summary>Eyes</summary>
+        <p class="description">
+            A specialized light-sensitive sensory structure of animals that in nearly all vertebrates, most arthropods, and some mollusks is the image-forming organ of sight
+            especially : the nearly spherical usually paired hollow organ of sight in vertebrates that is filled with a jellylike material, is lined with a photosensitive retina, and is lodged in a bony orbit in the skull.
+            <br>
+            <br>
+            Eyes are organs of the visual system. They provide organisms with vision, the ability to receive and process visual detail, as well as enabling several photo response functions that are independent of vision. Eyes detect light and convert it into electro-chemical impulses in neurons. In higher organisms, the eye is a complex optical system that collects light from the surrounding environment, regulates its intensity through a diaphragm, focuses it through an adjustable assembly of lenses to form an image, converts this image into a set of electrical signals, and transmits these signals to the brain through complex neural pathways that connect the eye via the optic nerve to the visual cortex and other areas of the brain. 
+          </p>
+      </details>
+    </div>
+  </div>
+
+  <script>
+    const imageElement = document.getElementById('mainImage');
+const changeImageButton = document.getElementById('changeImageButton');
+const infoElement = document.querySelector('.description'); 
+const toggleInfoButton = document.getElementById('toggleInfoButton');
+
+const images = ["a1.jpg", "a2.jpg"]; 
+let currentImageIndex = 0;
+
+changeImageButton.addEventListener('click', () => {
+  currentImageIndex = (currentImageIndex + 1) % images.length; 
+  imageElement.src = images[currentImageIndex];
+});
+
+toggleInfoButton.addEventListener('click', () => {
+  infoElement.classList.toggle('hidden'); 
+});
+  </script>
+</body>
+</html>

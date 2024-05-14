@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adding Program</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background: linear-gradient(to right, blue , white);
+        }
+        h2, p {
+            text-align: center;
+            color: black;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>JavaScript Arithmetic</h2>
+        <p>A typical arithmetic operation takes two numbers and produces a new number.</p>
+
+        <div id="results"></div>
+
+        <script>
+            let a = 1, b = 2, c = 3, d = 4;
+            a = prompt("Please enter the first number",1)
+            b = prompt("Please enter the second number",2)
+            c = parseFloat(a) + parseFloat(b);
+            d = parseFloat(c) + parseFloat(b) + parseFloat(a);
+            
+            document.getElementById("results").innerHTML = `
+                <p>First Number: ${a}</p>
+                <p>Second Number: ${b}</p>
+                <p>The Sum of the second and first number: ${c}</p>
+                <p>The Sum of all the numbers: ${d}</p>
+            `;
+        </script>
+    </div>
+</body>
+</html>

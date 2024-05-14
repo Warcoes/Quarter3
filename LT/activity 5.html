@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Operations Wizard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f5;
+             display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.452);
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .input-area {
+            margin-bottom: 20px;
+        }
+
+        .input-area label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-area input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        .input-area button {
+            padding: 10px 15px;
+            background-color: #7a8553;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.7s;
+            margin: 0 5px;
+        }
+
+        .input-area button:hover {
+            background-color: #aac44b;
+        }
+
+        .results h2 {
+            margin-bottom: 10px;
+        }
+
+
+
+        .dark-mode {
+            background-color: #333; 
+            color: #eee; 
+            transition: background-color 0.4s ease;
+        }
+
+        .dark-mode .container {
+            background-color: #222; 
+            box-shadow: 0 5px 10px rgba(150, 150, 150, 0.3); 
+            transition: background-color 0.4s ease;
+        }
+
+        .dark-mode button {
+            background-color: #555; 
+            color: #ddd;  
+            transition: background-color 0.4s ease;
+        }
+
+        .dark-mode button:hover {
+            background-color: #aac44b; 
+            transition: background-color 0.4s ease;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Number Operations Wizard</h1>
+
+        <div class="input-area">
+            <label for="numberInput">Enter a Number (greater than 0):</label>
+            <input type="number" id="numberInput" placeholder="Your number here">
+            <button onclick="addNumber()">Add Number</button>
+            <button onclick="clearResult()">Clear</button>
+            <div class="input-area" style="margin-top: 5px;">
+        <button onclick="toggleTheme()">Toggle Theme</button>
+            </div>
+        </div>
+
+        <div class="results">
+            <div id="resultAscending"> </div>
+            <div id="resultOperations"> </div> 
+        </div>
+    </div>
+
+
+
+    <script>
+ let numbers = [];
+
+function addNumber() {
+    let number = parseInt(document.getElementById("numberInput").value); 
+    if (isNaN(number) || number <= 0) {
+        alert("Please enter a valid number greater than 0");
+        return;
+    }
+
+    numbers.push(number);
+    displayResults();
+    document.getElementById("numberInput").value = ""; 
+}
+
+function clearResult() {
+    numbers = []; 
+    displayResults();
+}
+
+function displayResults() {
+    let numbersCopy = [...numbers];
+    numbersCopy.sort((a, b) => a - b);
+
+    document.getElementById("resultAscending").textContent =  
+        numbersCopy.length > 0 ? "Ascending Order: " + numbersCopy.join(", ") : "";
+
+    if (numbers.length > 0) {
+        const sum = numbers.filter(num => num % 2 === 0) 
+                          .reduce((total, num) => total + num, 0);
+        const resultOperations = document.getElementById("resultOperations");
+        resultOperations.innerHTML = `
+            <h2>Calculations</h2>
+            <p>Sum of Even Numbers: ${sum}</p> 
+        `;
+    } else {
+        document.getElementById("resultOperations").innerHTML = "";
+    }
+}
+
+function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+}
+    </script>
+</body>
+</html>

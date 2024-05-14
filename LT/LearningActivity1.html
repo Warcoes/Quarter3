@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern UI</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: rgb(67, 46, 46);
+            font-family: sans-serif;
+        }
+        h2 {
+            text-align: center;
+            color: rgb(169, 120, 255);
+            font-size: 35px;
+        }
+        #demo {
+            text-align: center;
+            color: white;
+            margin-top: 20px;
+        }
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>What Can JavaScript Do?</h2>
+
+<p id="demo">JavaScript can change HTML contents.</p>
+
+<div class="btn-container">
+    <button type="button" class="btn btn-primary" onclick="changeText()">Click Me for suprise!</button>
+</div>
+
+<script>
+    var originalText = 'JavaScript can change HTML contents.';
+    var newText = 'Like this text.';
+    function changeText() {
+        var demo = document.getElementById('demo');
+        if(demo.innerHTML === originalText) {
+            demo.innerHTML = newText;
+        } else {
+            demo.innerHTML = originalText;
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>A Grading Program</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0-beta1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 2rem;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 0.25rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">A Grading Program</h1>
+        <div id="grade-details" class="mt-4"></div>
+    </div>
+
+    <script>
+        let [a, b, c, d] = ['first', 'second', 'third', 'fourth'].map(quarter =>
+            parseFloat(prompt(`Please enter your grade in the ${quarter} quarter`, 0))
+        );
+        let ave = (a + b + c + d) / 4;
+        let g = ave >= 95 ? 'A' : ave >= 90 ? 'A-' : ave >= 85 ? 'B+' : ave >= 80 ? 'B' : ave >= 75 ? 'B-' : 'F';
+        let m = {
+            'A': 'OUTSTANDING',
+            'A-': 'EXCELLENT',
+            'B+': 'VERY GOOD',
+            'B': 'GOOD',
+            'B-': 'SATISFACTORY',
+            'F': 'FAIL'
+        }[g];
+
+        document.getElementById('grade-details').innerHTML = 
+            `<h2>${m}</h2>
+            <div>Your first quarter grade is: ${a}</div>
+            <div>Your second quarter grade is: ${b}</div>
+            <div>Your third quarter grade is: ${c}</div>
+            <div>Your fourth quarter grade is: ${d}</div>
+            <div>Your <b>average</b> is: ${ave}</div>
+            <div>Your <b>letter grade</b> is: ${g}</div>`;
+    </script>
+</body>
+</html>

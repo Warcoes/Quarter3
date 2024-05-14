@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressive Grading System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+            background-color: #202020; 
+            color: #c7c7c7;            
+            margin: 0;              
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;        
+            background-color: #2e2e2e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2); 
+        }
+
+        h2 {
+            text-align: center; 
+            color: #8787d6; 
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #252525;
+            color: #c7c7c7;
+            border: 1px solid #808080;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #e08d2d; 
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #b17129;
+        }
+
+        #result {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #2e2e2e;
+            border-radius: 8px;
+        }
+
+        #result h3 {
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="container"> 
+        <h2>Grading System</h2>
+
+        <form id="gradeForm">
+            <div class="form-group">
+                <label for="studentNumber">Student Number:</label>
+                <input type="text" id="studentNumber" name="studentNumber" required>
+                
+                <label for="studentName">Student Name:</label>
+                <input type="text" id="studentName" name="studentName" required>
+                
+                <label for="quiz">Quiz:</label>
+                <input type="number" id="quiz" name="quiz" min="0" max="10"  required>
+                
+                <label for="recitation">Recitation:</label>
+                <input type="number" id="recitation" name="recitation" min="0" max="10"  required>
+                
+                <label for="longTest">Long Test:</label>
+                <input type="number" id="longTest" name="longTest" min="0" max="10"  required>
+                
+                <label for="project">Project:</label>
+                <input type="number" id="project" name="project" min="0" max="10"  required>
+                
+                <label for="attendance">Attendance:</label>
+                <input type="number" id="attendance" name="attendance" min="0" max="10"  required>
+                
+                <label for="exam">Exam:</label>
+                <input type="number" id="exam" name="exam" min="0" max="10"  required>
+            </div>
+            <input type="submit" value="Calculate Grade">
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+document.getElementById("gradeForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    var quiz = parseFloat(document.getElementById("quiz").value) * 0.1;
+    var recitation = parseFloat(document.getElementById("recitation").value) * 0.15;
+    var longTest = parseFloat(document.getElementById("longTest").value) * 0.15;
+    var project = parseFloat(document.getElementById("project").value) * 0.35;
+    var attendance = parseFloat(document.getElementById("attendance").value) * 0.05;
+    var exam = parseFloat(document.getElementById("exam").value) * 0.2;
+    
+    var totalGrade = quiz + recitation + longTest + project + attendance + exam;
+    
+    var scaledTotalGrade = totalGrade * 10;
+
+    var letterGrade;
+
+    if (scaledTotalGrade >= 95) {
+        letterGrade = "A+";
+    } else if (scaledTotalGrade >= 90) {
+        letterGrade = "A";
+    } else if (scaledTotalGrade >= 85) {
+        letterGrade = "B+";
+    } else if (scaledTotalGrade >= 80) {
+        letterGrade = "B";
+    } else if (scaledTotalGrade >= 75) {
+        letterGrade = "C";
+    } else {
+        letterGrade = "F";
+    }
+
+    document.getElementById("result").innerHTML = "<h3>Total Grade:</h3><p>" + scaledTotalGrade.toFixed(2) + "</p><h3>Letter Grade:</h3><p>" + letterGrade + "</p>";
+});
+    </script>
+</body>
+<footer style="text-align: center; margin-top: 20px; background-color: #272727; padding: 10px 0;">
+    <p style="color: white;">Made by: Euricoe Tolentino</p> 
+</footer>
+</html>
