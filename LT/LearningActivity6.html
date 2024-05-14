@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Using Events: LT#6</title>
+<style>
+  body {
+    font-family: sans-serif;
+    background: linear-gradient(to right, #f0f0f0, #e0e0e0); /* Light blue gradient */
+    background-image: url(LTBackground.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+  }
+
+  .container {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    width: fit-content;
+    margin: 0 auto;
+    background-color: #87ceeb;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    margin-top: 100px;
+    padding: 38px;
+  }
+
+  h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2em; /* Increase heading size */
+    color: #333; /* Darker text color */
+  }
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold; /* Bold text for labels */
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  textarea {
+    height: 5rem;
+    resize: none;
+  }
+
+  button {
+    background-color: #4CAF50;
+    margin-top: 15px;
+    color: white;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out; 
+  }
+
+  button:hover {
+    background-color: #3e8e41;
+  }
+
+  .output-box {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin: 1rem 0;
+    background-color: #eee; 
+    width: 400px;
+  }
+
+  .output-box h2,
+  .output-box p {
+    margin: 0; 
+  }
+  .output-box {
+    width: 500px;
+    margin: auto;
+    margin-top: 50px;
+    animation: slidein 0.4s ease-in alternate;
+    border-radius: 5px;
+  }
+  @keyframes slidein {
+    from {
+        transform: translateX(-400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>LT#6, Made by:<br> Euricoe Tolentino</h2>
+    <h3>Enter your information:</h3>
+    <form id="user-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required><br>
+      <br>
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" required><br>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <div id="output-container"></div>
+<script>
+  const form = document.getElementById('user-form');
+  const remarks = document.getElementById('remarks');
+  const outputContainer = document.getElementById('output-container');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const age = parseInt(document.getElementById('age').value);
+
+    let remarkText;
+    if (age >= 18) {
+      remarkText = "You are an adult";
+    } else {
+      remarkText = "You are a minor";
+    }
+
+    // Create a new element for the output box
+    const outputBox = document.createElement('div');
+    outputBox.classList.add('output-box');
+
+    // Create content for the output box
+    const outputContent = `
+      <h2>${name}</h2>
+      <p>Age: ${age}</p>
+      <p>Remarks: ${remarkText}</p>
+    `;
+    outputBox.innerHTML = outputContent;
+
+    // Append the new box to the output container
+    outputContainer.appendChild(outputBox);
+
+    // Clear the form
+    form.reset();
+    remarks.textContent = '';
+  });
+</script>
+</body>
+</html>
