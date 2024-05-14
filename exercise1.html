@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-image: url(ltbg.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        p {
+            text-align: center;
+            padding: 20px;
+            border: 1.5px solid black;
+            margin-bottom: 10px;
+            width: 350px;
+            margin-top: 15px;
+            margin: auto;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h2> JavaScript Objects</h2>
+
+<div>
+    <p id="demo"></p>
+    <br>
+    <p id="demo2"></p>
+    <br>
+    <p id="demo3"></p>
+    <br>
+    <p id="demo4"></p>
+    <br>
+    <p id="demo5"></p>
+</div>
+    <script>
+
+        const person = {
+            firstname: "Paul Justin C.",
+            lastname: "Canotal",
+            age: 16,
+            eyeColor: "Brown"
+        };
+
+        const person1 = {
+            firstname: "Mark Ezekiel",
+            lastname: "Dumaguit",
+            age: 16,
+            eyeColor: "Brown"
+        };
+
+        const person2 = {
+            firstname: "Euricoe",
+            lastname: "Tolentino",
+            age: 16,
+            eyeColor: "Brown"
+        };
+        const person3 = {
+            firstname: "Venedict Floyd",
+            lastname: "Quimay",
+            age: 16,
+            eyeColor: "Brown"
+        };
+        const person4 = {
+            firstname: "Sofia Lorraine",
+            lastname: "Giega",
+            age: 16,
+            eyeColor: "Brown"
+        };
+
+
+
+        document.getElementById("demo").innerHTML =
+            person.firstname + " " + person.lastname + " is " + person.age + "years old." +
+            " His eye color is " + person.eyeColor;
+
+            document.getElementById("demo2").innerHTML =
+            person1.firstname + " " + person1.lastname + " is " + person1.age + "years old." +
+            " His eye color is " + person1.eyeColor;
+
+            document.getElementById("demo3").innerHTML =
+            person2.firstname + " " + person2.lastname + " is " + person2.age + "years old." +
+            " His eye color is " + person2.eyeColor;
+
+            document.getElementById("demo4").innerHTML =
+            person3.firstname + " " + person3.lastname + " is " + person3.age + "years old." +
+            " His eye color is " + person3.eyeColor;
+
+            document.getElementById("demo5").innerHTML =
+            person4.firstname + " " + person4.lastname + " is " + person4.age + "years old." +
+            " Her/His eye color is " + person4.eyeColor;
+
+
+
+    </script>
+</body>
+
+</html>
